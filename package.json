@@ -18,5 +18,8 @@
     "emulator"
   ],
   "author": "Kevin Lindsey",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "kld-text-utils": "0.0.2"
+  }
 }
