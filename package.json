@@ -1,0 +1,22 @@
+{
+  "name": "kld-6502",
+  "version": "0.0.1",
+  "description": "A 6502 assembler, disassembler, and emulator just for fun",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/thelonious/kld-6502.git"
+  },
+  "keywords": [
+    "6502",
+    "assembly",
+    "assembler",
+    "disassembler",
+    "emulator"
+  ],
+  "author": "Kevin Lindsey",
+  "license": "MIT"
+}
