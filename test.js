@@ -5,13 +5,12 @@ let Microprocessor = require('./lib/Microprocessor');
 let memory = new Array(0x10000);
 let micro = new Microprocessor(memory);
 
+// set start vector
+micro.startVector = 0x0600;
+
 // load program
 memory[0x0600] = 0xa9;
 memory[0x0601] = 0x10;
-
-// set start vector
-memory[0xfffc] = 0x00;
-memory[0xfffd] = 0x06;
 
 // warm boot
 micro.warmboot();
