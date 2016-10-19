@@ -41,6 +41,20 @@ describe("Assembler", function() {
 		assertMemory(memory, values, 0);
 	});
 
+	it("should parse .l", function() {
+		var memory = assemble(".db $610.l, $620.l, $630.l");
+		var values = [0x10, 0x20, 0x30];
+
+		assertMemory(memory, values, 0);
+	});
+
+	it("should parse .h", function() {
+		var memory = assemble(".db $610.h, $720.h, $830.h");
+		var values = [6, 7, 8];
+
+		assertMemory(memory, values, 0);
+	});
+
 	it("should parse .include", function() {
 		var memory = assemble(".include \"test.6502\"");
 
