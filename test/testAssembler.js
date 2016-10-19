@@ -15,6 +15,13 @@ function assertMemory(memory, values, startingAddress) {
 
 describe("Assembler", function() {
 
+	it("should parse .ascii", function() {
+		var memory = assemble(".ascii \"hello\"");
+		var values = [104, 101, 108, 108, 111];
+
+		assertMemory(memory, values, 0);
+	});
+
 	it("should parse .ds", function() {
 		var source = [
 			".db 10",
@@ -51,6 +58,27 @@ describe("Assembler", function() {
 	it("should parse .h", function() {
 		var memory = assemble(".db $610.h, $720.h, $830.h");
 		var values = [6, 7, 8];
+
+		assertMemory(memory, values, 0);
+	});
+
+	it("should parse a character constant", function() {
+		var memory = assemble(".db ' ', 'a', 'A'");
+		var values = [32, 97, 65];
+
+		assertMemory(memory, values, 0);
+	});
+
+	it("should parse addition", function() {
+		var memory = assemble(".db 1+1, 2 + 2, 3 + 3");
+		var values = [2, 4, 6];
+
+		assertMemory(memory, values, 0);
+	});
+
+	it("should parse multiplication", function() {
+		var memory = assemble(".db 1*1, 2 * 2, 3 * 3");
+		var values = [1, 4, 9];
 
 		assertMemory(memory, values, 0);
 	});
