@@ -1,12 +1,32 @@
-{{#entries}}
-it("should parse {{name}}", function() {
-	var source = [
-		".org $600",
-		"{{source}}"
-	].join("\n");
-	var memory = assemble(source);
+// WARNING: This file is generated. Do not edit by hand
 
-	assert.ok(memory !== undefined);
+let assert    = require('assert'),
+	Assembler = require('../lib/Assembler');
+
+function assemble(source) {
+	var assembler = new Assembler();
+
+	return assembler.parse(source);
+}
+
+function assertMemory(memory, values, startingAddress) {
+	values.forEach((value, index) => {
+		assert.equal(memory[startingAddress + index], value);
+	});
+}
+
+describe("Assembler - generated tests", function() {
+
+	{{#entries}}
+	it("should parse {{name}}", function() {
+		var source = [
+			".org $600",
+			"{{source}}"
+		].join("\n");
+		var memory = assemble(source);
+
+		assert.ok(memory !== undefined);
+	});
+
+	{{/entries}}
 });
-
-{{/entries}}
