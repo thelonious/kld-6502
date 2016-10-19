@@ -1,0 +1,20 @@
+; maximumValue
+;
+; setup default data
+        .org    $40
+        .db     $00,$05,$43,$00,$67,$79,$15,$E3,$72
+
+; begin program
+        .org    $1000
+        ldy     $41
+        lda     #0
+        cmp     ($42),y
+        bcs     $100A
+        lda     ($42),y
+        dey
+        bne     $1004
+        sta     $40
+        brk
+        jmp     $1000
+        jmp     ($1404)
+

@@ -1,0 +1,32 @@
+; maximumValue
+        .org    $40
+
+; define variables and data
+result  .db     $00
+count   .db     5
+numbers .db     $43,$00,$67,$79,$15,$E3,$72
+
+; begin program
+        .org    $1000
+start
+        ldy     count
+        lda     #0
+maximum
+        cmp     (numbers),y
+        bcs     no_change
+        lda     (numbers),y
+no_change
+        dey
+        bne     maximum
+        sta     result
+        brk
+
+;
+; these are miscellaneous tests for the parser
+; no real code here
+;
+        jmp     start
+        jmp     (start)
+        lda     (start.l),y
+        lda     (start.h),y
+

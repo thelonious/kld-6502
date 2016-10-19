@@ -1,0 +1,28 @@
+;
+; multiply
+;
+
+    .org    $40
+    .db     3, 5
+
+;
+;   main
+;
+    .org    $600
+    lda     #0
+    sta     $43
+    ldx     #8
+shift
+    asl     a
+    rol     $43
+    asl     $41
+    bcc     chcnt
+    clc
+    adc     $40
+    bcc     chcnt
+    inc     $43
+chcnt
+    dex
+    bne     shift
+    sta     $42
+    brk

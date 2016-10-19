@@ -13,14 +13,14 @@
     lda     $40
     sta     $43
     lda     $41
-divid
+divid:
     asl     $43
     rol     a
     cmp     $42
     bcc     chcnt
     sbc     $42
     inc     $43
-chcnt
+chcnt:
     dex
     bne     divid
     sta     $44

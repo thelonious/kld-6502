@@ -1,22 +1,40 @@
 #!/usr/bin/env node
 
 let Assembler = require('./lib/Assembler'),
-	fs = require('fs');
+	fs = require('fs'),
+	Table = require('kld-text-utils').Table;
 
 let assembler = new Assembler();
-let source = fs.readFileSync('./divide.6502', { encoding: "utf8" });
-let lexer = assembler.lexer;
+let source = fs.readFileSync('./samples/luigi.6502', { encoding: "utf8" });
 
-lexer.text = source;
-console.log(source);
+function showLexemes(source) {
+	// setup lexer
+	let lexer = assembler.lexer;
+	lexer.text = source;
 
-var result = lexer.next();
+	// define table and headers
+	var table = new Table();
+	table.headers = ["Type", "Line", "Column", "Text"];
 
-while (result !== null) {
-	if (result.type >= 2) {
-		console.log("[%s]: %s", result.token.type, result.text);
+	// collect lexemes
+	var result = lexer.next();
+
+	while (result !== null) {
+		if (result.type >= 2) {
+			table.addRow([
+				result.token.type,
+				result.line,
+				result.column,
+				result.text
+			]);
+		}
+		result = lexer.next();
 	}
-	result = lexer.next();
+
+	// show results
+	console.log(table.toString());
 }
 
-console.log("done");
+showLexemes(source);
+
+// assembler.parse(source);
