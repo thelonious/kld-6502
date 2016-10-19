@@ -42,8 +42,12 @@ Object.keys(Opcodes).forEach(mnemonic => {
 				parts.push(arg);
 			}
 
+			var modeText = mode.replace(/([A-Z])/g, match => {
+				return " " + match.toLowerCase();
+			});
+
 			data.entries.push({
-				name: "should parse " + mnemonic + ", " + mode,
+				name: "should parse " + mnemonic + "," + modeText,
 				source: parts.join(" ")
 			});
 		}
