@@ -1,0 +1,62 @@
+// level 0
+
+Program
+	:	Directive
+	|	Identifier
+	|	Mnemonic
+	|	EOL
+	;
+
+// level 1
+
+Directive
+	:	Db
+	|	Ds
+	|	Dw
+	|	Include
+	|	Org
+	;
+
+Identifier
+	:	IDENTIFIER COLON EQUATE Number
+	|	IDENTIFIER EQUATE Number
+	|	IDENTIFIER COLON
+	|	IDENTIFIER
+	;
+
+Mnemonic
+	:
+	;
+
+// level 2
+
+Db
+	:	DB NumberList
+	|	DB CHARSTRING
+	;
+
+Ds
+	:	DS Number
+	;
+
+Dw
+	:	DW NumberList
+	;
+
+Include
+	:	INCLUDE CHARSTRING
+	;
+
+Org
+	:	ORG Number
+	;
+
+Number
+	:
+	;
+
+// level 3
+
+NumberList
+	:	NumberList COMMA Number
+	;	Number
