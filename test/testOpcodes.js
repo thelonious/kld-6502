@@ -23,7 +23,7 @@ describe("Assembler - generated tests", function() {
 			"adc $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [109];
+		var values = [109,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -34,7 +34,7 @@ describe("Assembler - generated tests", function() {
 			"adc $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [125];
+		var values = [125,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -45,7 +45,7 @@ describe("Assembler - generated tests", function() {
 			"adc $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [121];
+		var values = [121,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -56,7 +56,7 @@ describe("Assembler - generated tests", function() {
 			"adc #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [105];
+		var values = [105,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -67,7 +67,7 @@ describe("Assembler - generated tests", function() {
 			"adc ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [97];
+		var values = [97,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -78,7 +78,7 @@ describe("Assembler - generated tests", function() {
 			"adc ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [113];
+		var values = [113,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -89,7 +89,7 @@ describe("Assembler - generated tests", function() {
 			"adc $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [101];
+		var values = [101,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -100,7 +100,7 @@ describe("Assembler - generated tests", function() {
 			"adc $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [117];
+		var values = [117,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -111,7 +111,7 @@ describe("Assembler - generated tests", function() {
 			"and $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [45];
+		var values = [45,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -122,7 +122,7 @@ describe("Assembler - generated tests", function() {
 			"and $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [61];
+		var values = [61,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -133,7 +133,7 @@ describe("Assembler - generated tests", function() {
 			"and $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [57];
+		var values = [57,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -144,7 +144,7 @@ describe("Assembler - generated tests", function() {
 			"and #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [41];
+		var values = [41,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -155,7 +155,7 @@ describe("Assembler - generated tests", function() {
 			"and ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [33];
+		var values = [33,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -166,7 +166,7 @@ describe("Assembler - generated tests", function() {
 			"and ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [49];
+		var values = [49,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -177,7 +177,7 @@ describe("Assembler - generated tests", function() {
 			"and $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [37];
+		var values = [37,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -188,7 +188,7 @@ describe("Assembler - generated tests", function() {
 			"and $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [53];
+		var values = [53,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -199,7 +199,7 @@ describe("Assembler - generated tests", function() {
 			"asl $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [14];
+		var values = [14,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -210,7 +210,7 @@ describe("Assembler - generated tests", function() {
 			"asl $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [30];
+		var values = [30,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -232,7 +232,7 @@ describe("Assembler - generated tests", function() {
 			"asl $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [6];
+		var values = [6,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -243,7 +243,7 @@ describe("Assembler - generated tests", function() {
 			"asl $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [22];
+		var values = [22,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -254,7 +254,7 @@ describe("Assembler - generated tests", function() {
 			"bcc $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [144];
+		var values = [144,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -265,7 +265,7 @@ describe("Assembler - generated tests", function() {
 			"bcs $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [176];
+		var values = [176,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -276,7 +276,7 @@ describe("Assembler - generated tests", function() {
 			"beq $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [240];
+		var values = [240,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -287,7 +287,7 @@ describe("Assembler - generated tests", function() {
 			"bit $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [44];
+		var values = [44,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -298,7 +298,7 @@ describe("Assembler - generated tests", function() {
 			"bit $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [36];
+		var values = [36,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -309,7 +309,7 @@ describe("Assembler - generated tests", function() {
 			"bmi $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [48];
+		var values = [48,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -320,7 +320,7 @@ describe("Assembler - generated tests", function() {
 			"bne $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [208];
+		var values = [208,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -331,7 +331,7 @@ describe("Assembler - generated tests", function() {
 			"bpl $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [16];
+		var values = [16,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -353,7 +353,7 @@ describe("Assembler - generated tests", function() {
 			"bvc $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [80];
+		var values = [80,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -364,7 +364,7 @@ describe("Assembler - generated tests", function() {
 			"bvs $610"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [112];
+		var values = [112,14];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -419,7 +419,7 @@ describe("Assembler - generated tests", function() {
 			"cmp $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [205];
+		var values = [205,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -430,7 +430,7 @@ describe("Assembler - generated tests", function() {
 			"cmp $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [221];
+		var values = [221,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -441,7 +441,7 @@ describe("Assembler - generated tests", function() {
 			"cmp $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [217];
+		var values = [217,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -452,7 +452,7 @@ describe("Assembler - generated tests", function() {
 			"cmp #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [201];
+		var values = [201,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -463,7 +463,7 @@ describe("Assembler - generated tests", function() {
 			"cmp ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [193];
+		var values = [193,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -474,7 +474,7 @@ describe("Assembler - generated tests", function() {
 			"cmp ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [209];
+		var values = [209,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -485,7 +485,7 @@ describe("Assembler - generated tests", function() {
 			"cmp $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [197];
+		var values = [197,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -496,7 +496,7 @@ describe("Assembler - generated tests", function() {
 			"cmp $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [213];
+		var values = [213,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -507,7 +507,7 @@ describe("Assembler - generated tests", function() {
 			"cpx $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [236];
+		var values = [236,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -518,7 +518,7 @@ describe("Assembler - generated tests", function() {
 			"cpx #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [224];
+		var values = [224,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -529,7 +529,7 @@ describe("Assembler - generated tests", function() {
 			"cpx $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [228];
+		var values = [228,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -540,7 +540,7 @@ describe("Assembler - generated tests", function() {
 			"cpy $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [204];
+		var values = [204,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -551,7 +551,7 @@ describe("Assembler - generated tests", function() {
 			"cpy #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [192];
+		var values = [192,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -562,7 +562,7 @@ describe("Assembler - generated tests", function() {
 			"cpy $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [196];
+		var values = [196,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -573,7 +573,7 @@ describe("Assembler - generated tests", function() {
 			"dec $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [206];
+		var values = [206,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -584,7 +584,7 @@ describe("Assembler - generated tests", function() {
 			"dec $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [222];
+		var values = [222,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -595,7 +595,7 @@ describe("Assembler - generated tests", function() {
 			"dec $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [198];
+		var values = [198,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -606,7 +606,7 @@ describe("Assembler - generated tests", function() {
 			"dec $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [214];
+		var values = [214,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -639,7 +639,7 @@ describe("Assembler - generated tests", function() {
 			"eor $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [77];
+		var values = [77,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -650,7 +650,7 @@ describe("Assembler - generated tests", function() {
 			"eor $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [93];
+		var values = [93,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -661,7 +661,7 @@ describe("Assembler - generated tests", function() {
 			"eor $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [89];
+		var values = [89,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -672,7 +672,7 @@ describe("Assembler - generated tests", function() {
 			"eor #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [73];
+		var values = [73,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -683,7 +683,7 @@ describe("Assembler - generated tests", function() {
 			"eor ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [65];
+		var values = [65,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -694,7 +694,7 @@ describe("Assembler - generated tests", function() {
 			"eor ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [81];
+		var values = [81,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -705,7 +705,7 @@ describe("Assembler - generated tests", function() {
 			"eor $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [69];
+		var values = [69,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -716,7 +716,7 @@ describe("Assembler - generated tests", function() {
 			"eor $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [85];
+		var values = [85,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -727,7 +727,7 @@ describe("Assembler - generated tests", function() {
 			"inc $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [238];
+		var values = [238,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -738,7 +738,7 @@ describe("Assembler - generated tests", function() {
 			"inc $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [254];
+		var values = [254,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -749,7 +749,7 @@ describe("Assembler - generated tests", function() {
 			"inc $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [230];
+		var values = [230,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -760,7 +760,7 @@ describe("Assembler - generated tests", function() {
 			"inc $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [246];
+		var values = [246,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -793,7 +793,7 @@ describe("Assembler - generated tests", function() {
 			"jmp $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [76];
+		var values = [76,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -804,7 +804,7 @@ describe("Assembler - generated tests", function() {
 			"jmp ($600)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [108];
+		var values = [108,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -815,7 +815,7 @@ describe("Assembler - generated tests", function() {
 			"jsr $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [32];
+		var values = [32,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -826,7 +826,7 @@ describe("Assembler - generated tests", function() {
 			"lda $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [173];
+		var values = [173,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -837,7 +837,7 @@ describe("Assembler - generated tests", function() {
 			"lda $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [189];
+		var values = [189,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -848,7 +848,7 @@ describe("Assembler - generated tests", function() {
 			"lda $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [185];
+		var values = [185,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -859,7 +859,7 @@ describe("Assembler - generated tests", function() {
 			"lda #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [169];
+		var values = [169,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -870,7 +870,7 @@ describe("Assembler - generated tests", function() {
 			"lda ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [161];
+		var values = [161,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -881,7 +881,7 @@ describe("Assembler - generated tests", function() {
 			"lda ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [177];
+		var values = [177,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -892,7 +892,7 @@ describe("Assembler - generated tests", function() {
 			"lda $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [165];
+		var values = [165,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -903,7 +903,7 @@ describe("Assembler - generated tests", function() {
 			"lda $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [181];
+		var values = [181,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -914,7 +914,7 @@ describe("Assembler - generated tests", function() {
 			"ldx $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [174];
+		var values = [174,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -925,7 +925,7 @@ describe("Assembler - generated tests", function() {
 			"ldx $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [190];
+		var values = [190,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -936,7 +936,7 @@ describe("Assembler - generated tests", function() {
 			"ldx #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [162];
+		var values = [162,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -947,7 +947,7 @@ describe("Assembler - generated tests", function() {
 			"ldx $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [166];
+		var values = [166,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -958,7 +958,7 @@ describe("Assembler - generated tests", function() {
 			"ldx $67,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [182];
+		var values = [182,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -969,7 +969,7 @@ describe("Assembler - generated tests", function() {
 			"ldy $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [172];
+		var values = [172,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -980,7 +980,7 @@ describe("Assembler - generated tests", function() {
 			"ldy $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [188];
+		var values = [188,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -991,7 +991,7 @@ describe("Assembler - generated tests", function() {
 			"ldy #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [160];
+		var values = [160,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1002,7 +1002,7 @@ describe("Assembler - generated tests", function() {
 			"ldy $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [164];
+		var values = [164,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1013,7 +1013,7 @@ describe("Assembler - generated tests", function() {
 			"ldy $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [180];
+		var values = [180,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1024,7 +1024,7 @@ describe("Assembler - generated tests", function() {
 			"lsr $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [78];
+		var values = [78,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1035,7 +1035,7 @@ describe("Assembler - generated tests", function() {
 			"lsr $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [94];
+		var values = [94,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1057,7 +1057,7 @@ describe("Assembler - generated tests", function() {
 			"lsr $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [70];
+		var values = [70,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1068,7 +1068,7 @@ describe("Assembler - generated tests", function() {
 			"lsr $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [86];
+		var values = [86,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1090,7 +1090,7 @@ describe("Assembler - generated tests", function() {
 			"ora $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [13];
+		var values = [13,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1101,7 +1101,7 @@ describe("Assembler - generated tests", function() {
 			"ora $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [29];
+		var values = [29,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1112,7 +1112,7 @@ describe("Assembler - generated tests", function() {
 			"ora $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [25];
+		var values = [25,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1123,7 +1123,7 @@ describe("Assembler - generated tests", function() {
 			"ora #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [9];
+		var values = [9,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1134,7 +1134,7 @@ describe("Assembler - generated tests", function() {
 			"ora ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [1];
+		var values = [1,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1145,7 +1145,7 @@ describe("Assembler - generated tests", function() {
 			"ora ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [17];
+		var values = [17,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1156,7 +1156,7 @@ describe("Assembler - generated tests", function() {
 			"ora $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [5];
+		var values = [5,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1167,7 +1167,7 @@ describe("Assembler - generated tests", function() {
 			"ora $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [21];
+		var values = [21,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1222,7 +1222,7 @@ describe("Assembler - generated tests", function() {
 			"rol $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [46];
+		var values = [46,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1233,7 +1233,7 @@ describe("Assembler - generated tests", function() {
 			"rol $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [62];
+		var values = [62,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1255,7 +1255,7 @@ describe("Assembler - generated tests", function() {
 			"rol $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [38];
+		var values = [38,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1266,7 +1266,7 @@ describe("Assembler - generated tests", function() {
 			"rol $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [54];
+		var values = [54,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1277,7 +1277,7 @@ describe("Assembler - generated tests", function() {
 			"ror $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [110];
+		var values = [110,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1288,7 +1288,7 @@ describe("Assembler - generated tests", function() {
 			"ror $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [126];
+		var values = [126,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1310,7 +1310,7 @@ describe("Assembler - generated tests", function() {
 			"ror $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [102];
+		var values = [102,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1321,7 +1321,7 @@ describe("Assembler - generated tests", function() {
 			"ror $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [118];
+		var values = [118,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1354,7 +1354,7 @@ describe("Assembler - generated tests", function() {
 			"sbc $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [237];
+		var values = [237,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1365,7 +1365,7 @@ describe("Assembler - generated tests", function() {
 			"sbc $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [253];
+		var values = [253,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1376,7 +1376,7 @@ describe("Assembler - generated tests", function() {
 			"sbc $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [249];
+		var values = [249,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1387,7 +1387,7 @@ describe("Assembler - generated tests", function() {
 			"sbc #$67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [233];
+		var values = [233,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1398,7 +1398,7 @@ describe("Assembler - generated tests", function() {
 			"sbc ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [225];
+		var values = [225,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1409,7 +1409,7 @@ describe("Assembler - generated tests", function() {
 			"sbc ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [241];
+		var values = [241,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1420,7 +1420,7 @@ describe("Assembler - generated tests", function() {
 			"sbc $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [229];
+		var values = [229,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1431,7 +1431,7 @@ describe("Assembler - generated tests", function() {
 			"sbc $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [245];
+		var values = [245,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1475,7 +1475,7 @@ describe("Assembler - generated tests", function() {
 			"sta $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [141];
+		var values = [141,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1486,7 +1486,7 @@ describe("Assembler - generated tests", function() {
 			"sta $600,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [157];
+		var values = [157,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1497,7 +1497,7 @@ describe("Assembler - generated tests", function() {
 			"sta $600,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [153];
+		var values = [153,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1508,7 +1508,7 @@ describe("Assembler - generated tests", function() {
 			"sta ($67,x)"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [129];
+		var values = [129,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1519,7 +1519,7 @@ describe("Assembler - generated tests", function() {
 			"sta ($67),y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [145];
+		var values = [145,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1530,7 +1530,7 @@ describe("Assembler - generated tests", function() {
 			"sta $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [133];
+		var values = [133,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1541,7 +1541,7 @@ describe("Assembler - generated tests", function() {
 			"sta $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [149];
+		var values = [149,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1552,7 +1552,7 @@ describe("Assembler - generated tests", function() {
 			"stx $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [142];
+		var values = [142,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1563,7 +1563,7 @@ describe("Assembler - generated tests", function() {
 			"stx $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [134];
+		var values = [134,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1574,7 +1574,7 @@ describe("Assembler - generated tests", function() {
 			"stx $67,y"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [150];
+		var values = [150,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1585,7 +1585,7 @@ describe("Assembler - generated tests", function() {
 			"sty $600"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [140];
+		var values = [140,0,6];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1596,7 +1596,7 @@ describe("Assembler - generated tests", function() {
 			"sty $67"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [132];
+		var values = [132,103];
 
 		assertMemory(memory, values, 0x600);
 	});
@@ -1607,7 +1607,7 @@ describe("Assembler - generated tests", function() {
 			"sty $67,x"
 		].join("\n");
 		var memory = assemble(source);
-		var values = [148];
+		var values = [148,103];
 
 		assertMemory(memory, values, 0x600);
 	});

@@ -7,19 +7,19 @@ var AddressModes = require('../lib/AddressModes'),
 	template = fs.readFileSync('./test.mustache', { encoding: "utf8" });
 
 let args = {
-	Absolute:    "$600",
-	AbsoluteX:   "$600,x",
-	AbsoluteY:   "$600,y",
-	Accumulator: "a",
-	Immediate:   "#$67",
-	Implied:     null,
-	Indirect:    "($600)",
-	IndirectX:   "($67,x)",
-	IndirectY:   "($67),y",
-	Relative:    "$610",
-	ZeroPage:    "$67",
-	ZeroPageX:   "$67,x",
-	ZeroPageY:   "$67,y"
+	Absolute:    { source: "$600",    bytes: [ 0x00, 0x06 ] },
+	AbsoluteX:   { source: "$600,x",  bytes: [ 0x00, 0x06 ] },
+	AbsoluteY:   { source: "$600,y",  bytes: [ 0x00, 0x06 ] },
+	Accumulator: { source: "a",       bytes: [] },
+	Immediate:   { source: "#$67",    bytes: [ 0x67 ] },
+	Implied:     { source: null,      bytes: [] },
+	Indirect:    { source: "($600)",  bytes: [ 0x00, 0x06 ] },
+	IndirectX:   { source: "($67,x)", bytes: [ 0x67 ] },
+	IndirectY:   { source: "($67),y", bytes: [ 0x67 ] },
+	Relative:    { source: "$610",    bytes: [ 0x0E ] },
+	ZeroPage:    { source: "$67",     bytes: [ 0x67 ] },
+	ZeroPageX:   { source: "$67,x",   bytes: [ 0x67 ] },
+	ZeroPageY:   { source: "$67,y",   bytes: [ 0x67 ] }
 };
 
 let indexMap = [];
@@ -39,10 +39,11 @@ Object.keys(Opcodes).forEach(mnemonic => {
 			var arg = args[mode];
 
 			values.push(opcode);
+			values = values.concat(arg.bytes);
 			parts.push(mnemonic);
 
-			if (arg !== null && arg !== "") {
-				parts.push(arg);
+			if (arg.source !== null && arg.source !== "") {
+				parts.push(arg.source);
 			}
 
 			var modeText = mode.replace(/([A-Z])/g, match => {
