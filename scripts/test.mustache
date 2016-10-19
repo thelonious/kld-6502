@@ -1,0 +1,12 @@
+{{#entries}}
+it("should parse {{name}}", function() {
+	var source = [
+		".org $600",
+		"{{source}}"
+	].join("\n");
+	var memory = assemble(source);
+
+	assert.ok(memory !== undefined);
+});
+
+{{/entries}}
