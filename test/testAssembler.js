@@ -22,6 +22,13 @@ describe("Assembler", function() {
 		assertMemory(memory, values, 0);
 	});
 
+	it("should parse .ascii list", function() {
+		var memory = assemble(".ascii \"hello\", \"goodbye\"");
+		var values = [104, 101, 108, 108, 111, 103, 111, 111, 100, 98, 121, 101];
+
+		assertMemory(memory, values, 0);
+	});
+
 	it("should parse .ds", function() {
 		var source = [
 			".db 10",
