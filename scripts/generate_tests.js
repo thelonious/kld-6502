@@ -33,9 +33,12 @@ Object.keys(Opcodes).forEach(mnemonic => {
 	Opcodes[mnemonic].forEach((opcode, index) => {
 		if (opcode !== -1) {
 			var parts = [];
+			var values = [];
+
 			var mode = indexMap[index];
 			var arg = args[mode];
 
+			values.push(opcode);
 			parts.push(mnemonic);
 
 			if (arg !== null && arg !== "") {
@@ -47,8 +50,9 @@ Object.keys(Opcodes).forEach(mnemonic => {
 			});
 
 			data.entries.push({
-				name: "should parse " + mnemonic + "," + modeText,
-				source: parts.join(" ")
+				name: mnemonic + "," + modeText,
+				source: parts.join(" "),
+				values: JSON.stringify(values)
 			});
 		}
 	});

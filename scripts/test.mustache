@@ -24,8 +24,9 @@ describe("Assembler - generated tests", function() {
 			"{{source}}"
 		].join("\n");
 		var memory = assemble(source);
+		var values = {{values}};
 
-		assert.ok(memory !== undefined);
+		assertMemory(memory, values, 0x600);
 	});
 
 	{{/entries}}
