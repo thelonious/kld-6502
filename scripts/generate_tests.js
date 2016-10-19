@@ -14,7 +14,7 @@ let args = {
 	Immediate:   "#$67",
 	Implied:     null,
 	Indirect:    "($600)",
-	IndirextX:   "($67,x)",
+	IndirectX:   "($67,x)",
 	IndirectY:   "($67),y",
 	Relative:    "$610",
 	ZeroPage:    "$67",
