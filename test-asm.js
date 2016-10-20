@@ -3,11 +3,16 @@
 let Assembler = require('./lib/Assembler'),
 	Disassembler = require('./lib/Disassembler'),
 	fs = require('fs'),
+	path = require('path'),
 	Table = require('kld-text-utils').Table,
 	format = require('kld-text-utils').format;
 
 let assembler = new Assembler();
-let source = fs.readFileSync('./samples/luigi.6502', { encoding: "utf8" });
+let file = path.resolve(process.argv[2]);
+let source = fs.readFileSync(file, { encoding: "utf8" });
+
+console.log("file = %s", file);
+console.log(source);
 
 function showLexemes(source) {
 	// setup lexer
@@ -60,4 +65,4 @@ function disassemble(memory, start, end) {
 
 var memory = assembler.parse(source);
 
-disassemble(memory, 0xA00, 0xFE0);
+disassemble(memory, 0x1000, 0x1020);
