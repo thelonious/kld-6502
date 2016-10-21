@@ -66,6 +66,15 @@ function disassemble(memory, start, end) {
 var info = assembler.parse(source);
 
 info.ranges.forEach(range => {
-	disassemble(info.memory, range.start, range.end);
+	if (range.types.includes("data")) {
+		console.log(
+			"skipping data section: [%s,%s]",
+			range.start.toString(16).toUpperCase(),
+			range.end.toString(16).toUpperCase()
+		);
+	}
+	else {
+		disassemble(info.memory, range.start, range.end);
+	}
 	console.log();
 });
