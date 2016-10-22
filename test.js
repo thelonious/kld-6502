@@ -23,6 +23,8 @@ console.log("before = %s", JSON.stringify(micro.registers, null, 2));
 micro.advance();
 console.log("after  = %s", JSON.stringify(micro.registers, null, 2));
 
+console.log("cycles = %s", micro.cycles);
+
 let table = new Table();
 table.headers = ["addr", "bytes", "mnemonic", "operand"];
 let dasm = new Disassembler();
