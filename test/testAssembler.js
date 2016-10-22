@@ -1,137 +1,137 @@
 let assert    = require('assert'),
-	Assembler = require('../lib/Assembler');
+    Assembler = require('../lib/Assembler');
 
 function assemble(source) {
-	var assembler = new Assembler();
+    var assembler = new Assembler();
 
-	return assembler.parse(source);
+    return assembler.parse(source);
 }
 
 function assertMemory(memory, values, startingAddress) {
-	values.forEach((value, index) => {
-		assert.equal(memory[startingAddress + index], value);
-	});
+    values.forEach((value, index) => {
+        assert.equal(memory[startingAddress + index], value);
+    });
 }
 
 describe("Assembler", function() {
 
-	it("should parse .ascii", function() {
-		var memory = assemble(".ascii \"hello\"");
-		var values = [104, 101, 108, 108, 111];
+    it("should parse .ascii", function() {
+        var memory = assemble(".ascii \"hello\"");
+        var values = [104, 101, 108, 108, 111];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse .ascii list", function() {
-		var memory = assemble(".ascii \"hello\", \"goodbye\"");
-		var values = [104, 101, 108, 108, 111, 103, 111, 111, 100, 98, 121, 101];
+    it("should parse .ascii list", function() {
+        var memory = assemble(".ascii \"hello\", \"goodbye\"");
+        var values = [104, 101, 108, 108, 111, 103, 111, 111, 100, 98, 121, 101];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse .ds", function() {
-		var source = [
-			".db 10",
-			".ds 5",
-			".db 20"
-		].join("\n");
-		var values = [10, 0, 0, 0, 0, 0, 20];
-		var memory = assemble(source);
+    it("should parse .ds", function() {
+        var source = [
+            ".db 10",
+            ".ds 5",
+            ".db 20"
+        ].join("\n");
+        var values = [10, 0, 0, 0, 0, 0, 20];
+        var memory = assemble(source);
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse .db", function() {
-		var memory = assemble(".db 10, 20, 30");
-		var values = [10, 20, 30];
+    it("should parse .db", function() {
+        var memory = assemble(".db 10, 20, 30");
+        var values = [10, 20, 30];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse .dw", function() {
-		var memory = assemble(".dw 10, 20, 30");
-		var values = [10, 0, 20, 0, 30, 0];
+    it("should parse .dw", function() {
+        var memory = assemble(".dw 10, 20, 30");
+        var values = [10, 0, 20, 0, 30, 0];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse .l", function() {
-		var memory = assemble(".db $610.l, $620.l, $630.l");
-		var values = [0x10, 0x20, 0x30];
+    it("should parse .l", function() {
+        var memory = assemble(".db $610.l, $620.l, $630.l");
+        var values = [0x10, 0x20, 0x30];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse .h", function() {
-		var memory = assemble(".db $610.h, $720.h, $830.h");
-		var values = [6, 7, 8];
+    it("should parse .h", function() {
+        var memory = assemble(".db $610.h, $720.h, $830.h");
+        var values = [6, 7, 8];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse a character constant", function() {
-		var memory = assemble(".db ' ', 'a', 'A'");
-		var values = [32, 97, 65];
+    it("should parse a character constant", function() {
+        var memory = assemble(".db ' ', 'a', 'A'");
+        var values = [32, 97, 65];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse addition", function() {
-		var memory = assemble(".db 1+1, 2 + 2, 3 + 3");
-		var values = [2, 4, 6];
+    it("should parse addition", function() {
+        var memory = assemble(".db 1+1, 2 + 2, 3 + 3");
+        var values = [2, 4, 6];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse multiplication", function() {
-		var memory = assemble(".db 1*1, 2 * 2, 3 * 3");
-		var values = [1, 4, 9];
+    it("should parse multiplication", function() {
+        var memory = assemble(".db 1*1, 2 * 2, 3 * 3");
+        var values = [1, 4, 9];
 
-		assertMemory(memory, values, 0);
-	});
+        assertMemory(memory, values, 0);
+    });
 
-	it("should parse .include", function() {
-		var memory = assemble(".include \"test.6502\"");
+    it("should parse .include", function() {
+        var memory = assemble(".include \"test.6502\"");
 
-		assert.ok(memory !== undefined);
-	});
+        assert.ok(memory !== undefined);
+    });
 
-	it("should parse .org", function() {
-		var memory = assemble(".org $600");
+    it("should parse .org", function() {
+        var memory = assemble(".org $600");
 
-		assert.ok(memory !== undefined);
-	});
+        assert.ok(memory !== undefined);
+    });
 
-	it("should parse an identifier", function() {
-		var memory = assemble("main");
+    it("should parse an identifier", function() {
+        var memory = assemble("main");
 
-		assert.ok(memory !== undefined);
-	});
+        assert.ok(memory !== undefined);
+    });
 
-	it("should parse an identifier with a colon", function() {
-		var memory = assemble("main:");
+    it("should parse an identifier with a colon", function() {
+        var memory = assemble("main:");
 
-		assert.ok(memory !== undefined);
-	});
+        assert.ok(memory !== undefined);
+    });
 
-	it("should parse an equate", function() {
-		var source = "width .equ 100";
-		var assembler = new Assembler();
-		var memory = assembler.parse(source);
+    it("should parse an equate", function() {
+        var source = "width .equ 100";
+        var assembler = new Assembler();
+        var memory = assembler.parse(source);
 
-		assert.ok(memory !== undefined);
-		assert.equal(assembler.symbols.width, 100);
-	});
+        assert.ok(memory !== undefined);
+        assert.equal(assembler.symbols.width, 100);
+    });
 
-	it("should parse .org", function() {
-		var source = [
-			".org $600",
-			".db 10, 20, 30"
-		].join("\n");
-		var memory = assemble(source);
-		var values = [10, 20, 30];
+    it("should parse .org", function() {
+        var source = [
+            ".org $600",
+            ".db 10, 20, 30"
+        ].join("\n");
+        var memory = assemble(source);
+        var values = [10, 20, 30];
 
-		assertMemory(memory, values, 0x600);
-	});
+        assertMemory(memory, values, 0x600);
+    });
 
 });

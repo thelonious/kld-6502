@@ -1,33 +1,33 @@
 // WARNING: This file is generated. Do not edit by hand
 
 let assert    = require('assert'),
-	Assembler = require('../lib/Assembler');
+    Assembler = require('../lib/Assembler');
 
 function assemble(source) {
-	var assembler = new Assembler();
+    var assembler = new Assembler();
 
-	return assembler.parse(source);
+    return assembler.parse(source);
 }
 
 function assertMemory(memory, values, startingAddress) {
-	values.forEach((value, index) => {
-		assert.equal(memory[startingAddress + index], value);
-	});
+    values.forEach((value, index) => {
+        assert.equal(memory[startingAddress + index], value);
+    });
 }
 
 describe("Assembler - generated tests", function() {
 
-	{{#entries}}
-	it("should parse {{name}}", function() {
-		var source = [
-			".org $600",
-			"{{source}}"
-		].join("\n");
-		var memory = assemble(source);
-		var values = {{values}};
+    {{#entries}}
+    it("should parse {{name}}", function() {
+        var source = [
+            ".org $600",
+            "{{source}}"
+        ].join("\n");
+        var memory = assemble(source);
+        var values = {{values}};
 
-		assertMemory(memory, values, 0x600);
-	});
+        assertMemory(memory, values, 0x600);
+    });
 
-	{{/entries}}
+    {{/entries}}
 });

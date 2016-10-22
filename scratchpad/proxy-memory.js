@@ -3,28 +3,28 @@
 var memory = [];
 var proxy = new Proxy(memory, {
 
-	get: (obj, property) => {
-		property = (typeof property !== "number") ? parseInt(property, 10) : property;
+    get: (obj, property) => {
+        property = (typeof property !== "number") ? parseInt(property, 10) : property;
 
-		if (property >= 0x8000) {
-			return property & 0xFF;
-		}
-	
-		return (property in obj) ? obj[property] : 0;
-	},
+        if (property >= 0x8000) {
+            return property & 0xFF;
+        }
+    
+        return (property in obj) ? obj[property] : 0;
+    },
 
-	set: (obj, property, value) => {
-		property = (typeof property !== "number") ? parseInt(property, 10) : property;
-		
-		if (property >= 0x8000) {
-			console.log("cannot set value in ROM: 0x%s = %s", property.toString(16), value);
-			return;
-		}
-		
-		obj[property] = value;
+    set: (obj, property, value) => {
+        property = (typeof property !== "number") ? parseInt(property, 10) : property;
+        
+        if (property >= 0x8000) {
+            console.log("cannot set value in ROM: 0x%s = %s", property.toString(16), value);
+            return;
+        }
+        
+        obj[property] = value;
 
-		return true;
-	}
+        return true;
+    }
 
 });
 
