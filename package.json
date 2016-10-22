@@ -22,7 +22,7 @@
   "author": "Kevin Lindsey",
   "license": "MIT",
   "dependencies": {
-    "kld-regex": "0.0.9",
+    "kld-regex": "0.0.10",
     "kld-text-utils": "0.0.4"
   },
   "devDependencies": {
